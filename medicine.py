@@ -10,10 +10,10 @@
 import time
 
 def add_medication():
-    input("Enter mediation: ")
+    input("Enter medication: ")
     input("Enter orders: ")
     input("Is the medication required? ")
-
+    input("Enter Perscription Qty: ")
 
 def take_medication():
     pass
