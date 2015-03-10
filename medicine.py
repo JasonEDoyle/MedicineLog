@@ -24,27 +24,34 @@ def take_medication():
 def check_medication():
     pass
 
-medication = []
-x = 0
+def refill_mediccation():
+    pass
 
-while x != 4: 
+medication = []
+choice = 0
+
+while choice != 5: 
     print("1) Add medication")
     print("2) Take medication")
     print("3) Check medications")
-    print("4) Exit")
-    x = int(input("Selection: "))
+    print("4) Refill medication")
+    print("5) Exit")
+    choice = int(input("Selection: "))
 
-    if x == 1:
+    if choice == 1:
         add_medication(medication)
 
-    elif x == 2:
+    elif choice == 2:
         take_medication()
 
-    elif x == 3:
+    elif choice == 3:
         check_medication()
 
-    elif x== 4:
-        break
+    elif choice == 4:
+        refill_medication()
+
+    elif choice == 5:
+        print("Exiting.")
 
     else:
         print('\nInvaild selection. \n')
