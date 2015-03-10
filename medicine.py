@@ -9,11 +9,14 @@
 
 import time
 
-def add_medication():
-    input("Enter medication: ")
-    input("Enter orders: ")
-    input("Is the medication required? ")
-    input("Enter Perscription Qty: ")
+def add_medication(medication):
+    med = input("Enter medication: ")
+    orders = input("Enter orders: ")
+    required = input("Is the medication required? ")
+    qty = input("Enter Perscription Qty: ")
+
+    medication.append([med, orders, required, qty])
+    print(medication)
 
 def take_medication():
     pass
@@ -21,6 +24,7 @@ def take_medication():
 def check_medication():
     pass
 
+medication = []
 x = 0
 
 while x != 4: 
@@ -31,7 +35,7 @@ while x != 4:
     x = int(input("Selection: "))
 
     if x == 1:
-        add_medication()
+        add_medication(medication)
 
     elif x == 2:
         take_medication()
