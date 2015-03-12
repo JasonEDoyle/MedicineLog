@@ -17,6 +17,8 @@ def add_medication(medication):
 
     medication.append([med, orders, required, qty])
     print(medication)
+    with open("Medication.txt", "wt") as out_file:
+        out_file.write(str(medication))
 
 def take_medication():
     pass
@@ -24,7 +26,7 @@ def take_medication():
 def check_medication():
     pass
 
-def refill_mediccation():
+def refill_medication():
     pass
 
 medication = []
