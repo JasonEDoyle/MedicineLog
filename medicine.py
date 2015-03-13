@@ -17,8 +17,9 @@ def add_medication(medication):
 
     medication.append([med, orders, required, qty])
     print(medication)
+    string = "\n".join("\t".join(map(str,l)) for l in medication) # Convert list to string
     with open("Medication.txt", "wt") as out_file:
-        out_file.write(str(medication))
+        out_file.write(string)
 
 def take_medication():
     pass
@@ -29,7 +30,12 @@ def check_medication():
 def refill_medication():
     pass
 
-medication = []
+
+with open("Medication.txt", "rt") as in_file:
+    text = in_file.read()
+    medication = [x.split('\t') for x in text.split('\n')]
+print(medication)
+#medication = []
 choice = 0
 
 while choice != 5: 
