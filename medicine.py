@@ -21,8 +21,9 @@ def add_medication(medication):
     with open("Medication.txt", "wt") as out_file:
         out_file.write(string)
 
-def take_medication():
-    pass
+def take_medication(medication):
+    for i in medication:
+        print(i)
 
 def check_medication():
     pass
@@ -50,7 +51,7 @@ while choice != 5:
         add_medication(medication)
 
     elif choice == 2:
-        take_medication()
+        take_medication(medication)
 
     elif choice == 3:
         check_medication()
@@ -63,3 +64,4 @@ while choice != 5:
 
     else:
         print('\nInvaild selection. \n')
+
