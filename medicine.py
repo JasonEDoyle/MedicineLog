@@ -16,7 +16,7 @@ def add_medication(medication):
     qty = input("Enter Perscription Qty: ")
 
     medication.append([med, orders, required, qty])
-    print(medication)
+#    print(medication)
     string = "\n".join("\t".join(map(str,l)) for l in medication) # Convert list to string
     with open("Medication.txt", "wt") as out_file:
         out_file.write(string)
@@ -27,7 +27,10 @@ def take_medication(medication):
     med = int(input("Selection: "))
 
     print(str(medication[med-1][0]) + ' was taken at ' + str(time.ctime()))
-    
+
+    with open("Medication.log", "a") as out_file:
+        out_file.write(str(medication[med-1][0]) + ' ' + str(time.time()) + '\n')
+
 def check_medication():
     pass
 
