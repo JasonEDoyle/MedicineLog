@@ -23,8 +23,11 @@ def add_medication(medication):
 
 def take_medication(medication):
     for i in medication:
-        print(i)
+        print(str(medication.index(i)+1) + ": " + str(i[0]))
+    med = int(input("Selection: "))
 
+    print(str(medication[med-1][0]) + ' was taken at ' + str(time.ctime()))
+    
 def check_medication():
     pass
 
