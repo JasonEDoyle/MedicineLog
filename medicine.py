@@ -38,36 +38,38 @@ def refill_medication():
     pass
 
 
-with open("Medication.txt", "rt") as in_file:
-    text = in_file.read()
-    medication = [x.split('\t') for x in text.split('\n')]
-print(medication)
-#medication = []
-choice = 0
+if __name__ == '__main__':
 
-while choice != 5: 
-    print("1) Add medication")
-    print("2) Take medication")
-    print("3) Check medications")
-    print("4) Refill medication")
-    print("5) Exit")
-    choice = int(input("Selection: "))
+    with open("Medication.txt", "a+") as in_file:
+        in_file.seek(0)
+        text = in_file.read()
+        medication = [x.split('\t') for x in text.split('\n')]
+    print(medication)
+    
+    choice = 0
 
-    if choice == 1:
-        add_medication(medication)
+    while choice != 5:
+        print("1) Add medication")
+        print("2) Take medication")
+        print("3) Check medications")
+        print("4) Refill medication")
+        print("5) Exit")
+        choice = int(input("Selection: "))
 
-    elif choice == 2:
-        take_medication(medication)
+        if choice == 1:
+            add_medication(medication)
 
-    elif choice == 3:
-        check_medication()
+        elif choice == 2:
+            take_medication(medication)
 
-    elif choice == 4:
-        refill_medication()
+        elif choice == 3:
+            check_medication()
 
-    elif choice == 5:
-        print("Exiting.")
+        elif choice == 4:
+            refill_medication()
 
-    else:
-        print('\nInvaild selection. \n')
+        elif choice == 5:
+            print("Exiting.")
 
+        else:
+            print('\nInvaild selection. \n')
