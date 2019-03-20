@@ -22,16 +22,16 @@ class MyWindow(Gtk.Window):
         self.add(self.notebook)
         self.notebook.set_tab_pos(0)
 
+        self.add_med = AddMedication()
+
+        
         self.page1 = Gtk.Box()
         self.page1.set_border_width(10)
         self.page1.add(Gtk.Label('Default Page!'))
         self.notebook.append_page(self.page1, Gtk.Label('Take Medication'))
 
-        self.page2 = Gtk.Box()
-        self.page2.set_border_width(10)
-        self.page2.add(Gtk.Label('A page with an image for a Title.'))
         self.notebook.append_page(
-            self.page2, Gtk.Label('Add New Medication')
+            self.add_med, Gtk.Label('Add New Medication')
         )
 
         self.page3 = Gtk.Box()
@@ -39,38 +39,57 @@ class MyWindow(Gtk.Window):
         self.page4 = Gtk.Box()
         self.notebook.append_page(self.page4, Gtk.Label('Refill Medication'))
 
+class AddMedication(Gtk.Grid):
+
+    def __init__(self):
+        Gtk.Grid.__init__(self)
+        self.set_border_width(10)
+
+        self.entry = Gtk.Entry()
+        self.entry.set_text("Hello World")
+
+        label1 = Gtk.Label('Enter medication: ')
+        self.add(label1)
+        self.attach_next_to(self.entry, label1, Gtk.PositionType.RIGHT, 1, 1)
+
+
+        self.attach(Gtk.Label('Qty: '), 0, 1, 1, 1)
+        self.attach(Gtk.Label('Directions: '), 0, 2, 1, 1)
+        self.attach(Gtk.Label('Important Information: '), 0, 3, 1, 1)
+
+
 win = MyWindow()
 win.connect("destroy", Gtk.main_quit)
 win.show_all()
 Gtk.main()
 
-def add_medication(medication):
-    med = input("Enter medication: ")
-    orders = input("Enter orders: ")
-    required = input("Is the medication required? ")
-    qty = input("Enter Perscription Qty: ")
-
-    medication.append([med, orders, required, qty])
-#    print(medication)
-    string = "\n".join("\t".join(map(str,l)) for l in medication) # Convert list to string
-    with open("Medication.txt", "wt") as out_file:
-        out_file.write(string)
-
-def take_medication(medication):
-    for i in medication:
-        print(str(medication.index(i)+1) + ": " + str(i[0]))
-    med = int(input("Selection: "))
-
-    print(str(medication[med-1][0]) + ' was taken at ' + str(time.ctime()))
-
-    with open("Medication.log", "a") as out_file:
-        out_file.write(str(medication[med-1][0]) + ' ' + str(time.time()) + '\n')
-
-def check_medication():
-    pass
-
-def refill_medication():
-    pass
+##def add_medication(medication):
+##    med = input("Enter medication: ")
+##    orders = input("Enter orders: ")
+##    required = input("Is the medication required? ")
+##    qty = input("Enter Perscription Qty: ")
+##
+##    medication.append([med, orders, required, qty])
+###    print(medication)
+##    string = "\n".join("\t".join(map(str,l)) for l in medication) # Convert list to string
+##    with open("Medication.txt", "wt") as out_file:
+##        out_file.write(string)
+##
+##def take_medication(medication):
+##    for i in medication:
+##        print(str(medication.index(i)+1) + ": " + str(i[0]))
+##    med = int(input("Selection: "))
+##
+##    print(str(medication[med-1][0]) + ' was taken at ' + str(time.ctime()))
+##
+##    with open("Medication.log", "a") as out_file:
+##        out_file.write(str(medication[med-1][0]) + ' ' + str(time.time()) + '\n')
+##
+##def check_medication():
+##    pass
+##
+##def refill_medication():
+##    pass
 
 
 #if __name__ == '__main__':
